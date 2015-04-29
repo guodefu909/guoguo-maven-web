@@ -1,6 +1,9 @@
 package com.web.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.domain.Form1;
 import com.domain.LoginForm;
@@ -28,29 +32,29 @@ public class LoginController {
 	// , method = RequestMethod.POST
 	public String login(LoginForm loginform,ModelMap model,String username) {// 可以将封装好的LoginForm loginform作为入参(自动封装)，也可以将username，password分别作为入参
 
-		// long currentTime = System.currentTimeMillis();// 好像没什么用，直接new Date()不就好了？
-		// SimpleDateFormat formatter = new SimpleDateFormat("yyyy年-MM月dd日-HH时mm分ss秒");
-		// Date date = new Date(currentTime);//long转date
-		// String str2 = formatter.format(date);// date 转string
-		// System.out.println(str2);
-		//
-		// String str1 = "2008-04-24";
-		// SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd");
-		// try{
-		// Date date2 = formatter2.parse(str1);//string 转date
-		// System.out.println(date2);
-		// }
-		// catch(ParseException e){
-		// e.printStackTrace();
-		// }
+		 long currentTime = System.currentTimeMillis();// 好像没什么用，直接new Date()不就好了？
+		 SimpleDateFormat formatter = new SimpleDateFormat("yyyy年-MM月dd日-HH时mm分ss秒");
+		 Date date = new Date(currentTime);//long转date
+		 String str2 = formatter.format(date);// date 转string
+		 System.out.println(str2);
+		
+		 String str1 = "2008-04-24";
+		 SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd");
+		 try{
+		 Date date2 = formatter2.parse(str1);//string 转date
+		 System.out.println(date2);
+		 }
+		 catch(ParseException e){
+		 e.printStackTrace();
+		 }
 
-		// String username = request.getParameter("username");//还可以用老方法，通过request获取参数，,HttpServletRequest request要作为入参
-		// username = new String(username.getBytes("ISO-8859-1"),"utf-8"); //解决乱码的终极办法，没办法的办法
+//		 String username = request.getParameter("username");//还可以用老方法，通过request获取参数，,HttpServletRequest request要作为入参
+//		 username = new String(username.getBytes("ISO-8859-1"),"utf-8"); //解决乱码的终极办法，没办法的办法
 
-		// ModelAndView mv = new ModelAndView("/index/index");//ModelAndView不如ModelMap实在，不过省了ModelMap model这一步
-		// mv.addObject("command","登录成功!");
-		// mv.addObject("username",username);
-		// mv.addObject("loginform",loginform);
+		 ModelAndView mv = new ModelAndView("/index/index");//ModelAndView不如ModelMap实在，不过省了ModelMap model这一步
+		 mv.addObject("command","登录成功!");
+		 mv.addObject("username",username);
+		 mv.addObject("loginform",loginform);
 
 		model.addAttribute("loginform",loginform);
 		System.out.println(loginform.getUsername());
