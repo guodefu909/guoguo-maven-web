@@ -40,6 +40,4 @@ public class AdviceMethodTakeTime {
 		System.out.println(" "+classmothed+" 执行完毕。共耗时："+pendtime+"秒。");
 		return returnValue;
      } 
-
-
 }
